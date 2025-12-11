@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger website</title>
+    <link rel="stylesheet" href="project10.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTTXRM2...yourHash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<div id="stars"></div>
+
+<body>
+    <header>
+        <div class="mean_container"></div>
+        <div class="navber">
+            <div class="logo_nav">
+                <img src="./ChatGPT Image Dec 8, 2025, 01_02_25 PM.png" alt="">
+            </div>
+            <div class="center-nav">
+                <a href=" ">Home</a>
+                <a href="">Menu</a>
+                <a href="">About</a>
+                <a href="">Shop</a>
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
+                <a href=""><i class="fa-solid fa-house"></i></a>
+            </div>
+        </div>
+        <div class="text">
+            <h1>THE ULTIMATE<br>BURGER FARM</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste labore fugit at optio reiciendis
+                reprehenderit ratione provident exercitationem neque distinctio! Possimus earum reiciendis minus
+                veritatis distinctio perspiciatis temporibus qui voluptatum voluptatem ea! Nisi, minima rem.</p>
+            <a href="" class="btn">Order Now</a>
+            <a href="" class="btn">View more</a>
+        </div>
+        <div class="burger">
+            <img src="./burger img1.jpg" alt="">
+            <img src="./burger img2.jpg" alt="">
+            <img src="./burger img3.jpg" alt="">
+            <img src="./burger img4.jpg" alt="">
+            <img src="./burger img2.jpg" alt="">
+        </div>
+        <div class="burger-toggle">
+            <img src="./burger img3.jpg" alt=" " class="active">
+        </div>
+    </header>
+    <script>
+        const burgerImages = document.querySelectorAll('.burger img');
+        const toggleImages = document.querySelectorAll('.burger-toggle img');
+        let currentIndex = 0;
+
+        toggleImages[currentIndex].classList.add('active');
+
+        burgerImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+                toggleImages[currentIndex].classList.add('active');
+                toggleImages[currentIndex].src = burgerImages[index].src;
+                currentIndex = (currentIndex + 1) % toggleImages.length;
+            });
+
+        });
+        //Generate random stars
+        function createstars() {
+            const starscontainer = document.getElementById('stars');
+            const windowwidth = window.innerWidth;
+            const windowheight = window.innerHeight;
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * windowWidth}px`;
+                star.style.top = `${Math.random() * windowHeight} px`;
+                starscontainer.appendChild(star);
+            }
+
+        }
+        // call th createstars function when thepage loads
+        window.addEventListener('load', createstars);
+    </script>
+</body>
+
+
+</html>
